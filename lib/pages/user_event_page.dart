@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-
 class EventUser extends StatelessWidget {
-  
    EventUser({super.key});
-  void update_event(){
+
+  void updateEvent(){
     //code to update event
   }
 
-  bool delete_event(){
+  bool deleteEvent(){
     //code
     //code to delete event
     return true;
   }
   
-
-
-  Padding update_delete_button() {
+  Padding updateDeleteButton() {
      return Padding(
                padding: const EdgeInsets.only(left: 40,right: 40,top: 0,bottom: 20),
                child: Column(
@@ -33,7 +30,7 @@ class EventUser extends StatelessWidget {
                         textColor: Colors.white,
                         backgroundColor: Colors.blueAccent,
                       ),
-                       onPressed: () => update_event(), 
+                       onPressed: () => updateEvent(), 
                        child: Row(
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
@@ -49,17 +46,18 @@ class EventUser extends StatelessWidget {
                   Container(
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        // color: Colors.white.withOpacity(0.1),
+                        color: Colors.white.withAlpha((0.1 * 255).toInt()), // updated
                         borderRadius: BorderRadius.circular(20),
-                        
                       ),
                      child: ElevatedButton(
                       style:  customButtonStyle(
                                 borderColor: Colors.blueAccent,
                                 textColor: Colors.blueAccent,
-                                backgroundColor: Colors.white.withOpacity(0.2),
+                                // backgroundColor: Colors.white.withOpacity(0.2),
+                                backgroundColor: Colors.white.withAlpha((0.2 * 255).toInt()), // updated
 ),
-                       onPressed: () => delete_event(), 
+                       onPressed: () => deleteEvent(), 
                           child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -76,7 +74,7 @@ class EventUser extends StatelessWidget {
              );
    }
   
-  Row back_arrow_button() {
+  Row backArrowButton() {
     return Row(
               children: [
                 TextButton.icon(
@@ -123,9 +121,9 @@ class EventUser extends StatelessWidget {
 
   //data from database
 
-   final List<String> about_event_text=["In the heart of every sunrise lies a chance to begin again. Whether the day holds routine tasks or unexpected adventures, it reminds us that progress is stitched together from small steps. Moments of quiet reflection, paired with action, shape our stories over time. We often overlook the beauty in persistence, yet it's this steady effort that builds mastery. Challenges aren't barriers—they're invitations to grow stronger, think deeper, and try again. So embrace each task not for what it demands, but for what it teaches. In doing so, you become more than skilled—you become resilient, curious, and truly alive.",];
+   final List<String> aboutEventText=["In the heart of every sunrise lies a chance to begin again. Whether the day holds routine tasks or unexpected adventures, it reminds us that progress is stitched together from small steps. Moments of quiet reflection, paired with action, shape our stories over time. We often overlook the beauty in persistence, yet it's this steady effort that builds mastery. Challenges aren't barriers—they're invitations to grow stronger, think deeper, and try again. So embrace each task not for what it demands, but for what it teaches. In doing so, you become more than skilled—you become resilient, curious, and truly alive.",];
   
-   final List<String> description_points = [
+   final List<String> descriptionPoints = [
      "Participants will compete in teams of 2-3 members",
      "Each team will be given a coding problem to solve",
      "Teams must write code without seeing the output",
@@ -138,7 +136,7 @@ class EventUser extends StatelessWidget {
      "Networking session after the competition"
    ];
    
-   final List<String> rules_points = [
+   final List<String> rulesPoints = [
      "All participants must register before the event",
      "Teams must arrive 15 minutes before start time",
      "No external devices or calculators allowed",
@@ -151,28 +149,28 @@ class EventUser extends StatelessWidget {
      "Event organizers reserve all rights"
    ];
 
-   final List<String> judging_criteria_points = [
+   final List<String> judgingCriteriaPoints = [
      "All participants must register before the event",
      "Teams must arrive 15 minutes before start time",
      "No external devices or calculators allowed",
      "All code must be written in the provided IDE",
      "Teams cannot communicate with other teams"];
 
-   final String img_url="https://tse1.mm.bing.net/th/id/OIP.3moDhGXJQx9PQekpJFkHpgHaFf?pid=Api&P=0&h=180";
+   final String imgUrl="https://tse1.mm.bing.net/th/id/OIP.3moDhGXJQx9PQekpJFkHpgHaFf?pid=Api&P=0&h=180";
 
-   final String date_event="29/10/2005";
-   final String place_event="Seminar Hall";
-   final String name_event="Blind Coding";
-   final String time_evemt="8:00pm";
-   final String participants_event="120";
+   final String dateEvent="29/10/2005";
+   final String placeEvent="Seminar Hall";
+   final String nameEvent="Blind Coding";
+   final String timeEvemt="8:00pm";
+   final String participantsEvent="120";
    final bool isBookmarkedInitially = false;
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    //final screenHeight = MediaQuery.of(context).size.height;
     final isTablet = screenWidth > 600;
-    final isDesktop = screenWidth > 900;
+   // final isDesktop = screenWidth > 900;
 
     //image url
     //data from database
@@ -191,18 +189,18 @@ class EventUser extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  back_arrow_button(),BookmarkToggleButton(isBookmarkedInitially: isBookmarkedInitially),
+                  backArrowButton(),BookmarkToggleButton(isBookmarkedInitially:   isBookmarkedInitially),
                 ],
               ),
               SizedBox(height: isTablet ? 80 : 50,),
-              ProportionalImage(imageUrl: img_url),
-              EventDetails(date: date_event, time: time_evemt,participant: participants_event,event_place: place_event,event_name: name_event,),
+              ProportionalImage(imageUrl: imgUrl),
+              EventDetails(date: dateEvent, time: timeEvemt,participant: participantsEvent,eventPlace: placeEvent,eventName: nameEvent,),
               SizedBox(height: 20,),
-              update_delete_button(),
-              EventInfo(criteriaPoints: about_event_text, title: "About", icon:Icons.info_outline,),
-              EventInfo(criteriaPoints: description_points, title: "Description", icon:Icons.description_outlined,),
-              EventInfo(criteriaPoints: rules_points, title: "Rules", icon: Icons.rule,),
-              EventInfo(criteriaPoints: judging_criteria_points, title: "Judging Criteria", icon: Icons.check_circle_outline,),
+              updateDeleteButton(),
+              EventInfo(criteriaPoints: aboutEventText, title: "About", icon:Icons.info_outline,),
+              EventInfo(criteriaPoints: descriptionPoints, title: "Description", icon:Icons.description_outlined,),
+              EventInfo(criteriaPoints: rulesPoints, title: "Rules", icon: Icons.rule,),
+              EventInfo(criteriaPoints: judgingCriteriaPoints, title: "Judging Criteria", icon: Icons.check_circle_outline,),
               GalleryCoordinator(),
               SizedBox(height: 30,),
 
@@ -215,10 +213,9 @@ class EventUser extends StatelessWidget {
     );
   }
 }
-
 class ProportionalImage extends StatefulWidget {
   final String imageUrl;
-  const ProportionalImage({required this.imageUrl});
+  const ProportionalImage({required this.imageUrl,super.key});
 
   @override
   State<ProportionalImage> createState() => _ProportionalImageState();
@@ -257,7 +254,7 @@ class _ProportionalImageState extends State<ProportionalImage> {
     final containerHeight = containerWidth / (_aspectRatio ?? 1) - (isTablet ? 40 : 30);
 
     return _loading
-        ? Container(
+        ? SizedBox(
             width: containerWidth,
             height: containerHeight,
             child: Center(child: Text("Loading image..."))
@@ -290,13 +287,14 @@ class EventInfo extends StatefulWidget {
     required this.criteriaPoints,
     required this.title,
     required this.icon,
+    super.key
   });
 
   @override
-  _EventInfoState createState() => _EventInfoState();
+  EventInfoState createState() => EventInfoState();
 }
 
-class _EventInfoState extends State<EventInfo> {
+class EventInfoState extends State<EventInfo> {
   bool _isExpanded = false;
 
   @override
@@ -345,7 +343,7 @@ class _EventInfoState extends State<EventInfo> {
                   widget.title,
                   style: TextStyle(
                     fontSize: isDesktop ? 30 : isTablet ? 28 : 19,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.bold,
                     color: Colors.blueAccent,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -419,7 +417,7 @@ class _EventInfoState extends State<EventInfo> {
                                 fontSize: isDesktop ? 18 : isTablet ? 17 : 16,
                                 height: 1.5,
                                 color: Colors.black,
-                                fontWeight: FontWeight.normal,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -436,106 +434,98 @@ class _EventInfoState extends State<EventInfo> {
 }
 
 class EventDetails extends StatelessWidget {
-  final String date, time, participant, event_place, event_name;
+  final String date, time, participant, eventPlace, eventName;
   const EventDetails({
     super.key,
     this.date = "",
     this.time = "",
     this.participant = "",
-    this.event_place = "",
-    this.event_name = "",
+    this.eventPlace = "",
+    this.eventName = "",
   });
 
-  Container participants(double fontSize) {
-    return Container(
-      child: Row(
-        children: [
-          Icon(Icons.groups, color: Colors.grey[800]),
-          SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              "$participant Participants",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
-                fontSize: fontSize ,
-              ),
+  Widget participants(double fontSize) {
+    return Row(
+      children: [
+        Icon(Icons.groups, color: Colors.grey[800]),
+        SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            "$participant Participants",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
+              fontSize: fontSize ,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
-  Container time_date(double fontSize) {
-    return Container(
-      child: Row(
-        children: [
-          Icon(Icons.access_alarm, color: Colors.grey[800], size: fontSize + 10),
-          SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                time,
-                style: TextStyle(
-                  fontSize: fontSize - 2,
-                  color: Colors.grey[800],
-                  fontWeight: FontWeight.bold,
-                ),
+  Widget timeDate(double fontSize) {
+    return Row(
+      children: [
+        Icon(Icons.access_alarm, color: Colors.grey[800], size: fontSize + 10),
+        SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              time,
+              style: TextStyle(
+                fontSize: fontSize - 2,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                date,
-                style: TextStyle(
-                  fontSize: fontSize - 2,
-                  color: Colors.grey[800],
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            Text(
+              date,
+              style: TextStyle(
+                fontSize: fontSize - 2,
+                color: Colors.grey[800],
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
-  Container event(double fontSize) {
-    return Container(
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              event_name,
-              style: TextStyle(
-                fontSize: fontSize ,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
-              ),
+  Widget event(double fontSize) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            eventName,
+            style: TextStyle(
+              fontSize: fontSize ,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
             ),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+        );
   }
 
-  Container place(double fontSize) {
-    return Container(
-      child: Row(
-        children: [
-          Icon(Icons.meeting_room_rounded, size: fontSize + 5, color: Colors.grey[800]),
-          SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              event_place,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[800],
-                fontSize: fontSize,
-              ),
+  Widget place(double fontSize) {
+    return Row(
+      children: [
+        Icon(Icons.meeting_room_rounded, size: fontSize + 5, color: Colors.grey[800]),
+        SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            eventPlace,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[800],
+              fontSize: fontSize,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -576,7 +566,7 @@ class EventDetails extends StatelessWidget {
                   children: [
                     event(baseFontSize+4),
                     SizedBox(height: 10),
-                    time_date(baseFontSize),
+                    timeDate(baseFontSize),
                   ],
                 ),
               ),
@@ -601,15 +591,16 @@ class EventDetails extends StatelessWidget {
 }
 
 class GalleryCoordinator extends StatelessWidget {
+  const GalleryCoordinator({super.key});
   // Method to run when "Coordinators" is tapped
   void onCoordinatorsTap() {
-    print("Coordinators tapped!");
+   
     // Add your logic here
   }
 
   // Method to run when "View Image Gallery" is tapped
   void onGalleryTap() {
-    print("View Image Gallery tapped!");
+   
     // Add your logic here
   }
 
@@ -668,17 +659,17 @@ class GalleryCoordinator extends StatelessWidget {
 }
 
 
+
 class BookmarkToggleButton extends StatefulWidget {
   final bool isBookmarkedInitially;
 
-  const BookmarkToggleButton({Key? key, required this.isBookmarkedInitially})
-      : super(key: key);
+  const BookmarkToggleButton({ required this.isBookmarkedInitially,super.key});
 
   @override
-  _BookmarkToggleButtonState createState() => _BookmarkToggleButtonState();
+  BookmarkToggleButtonState createState() => BookmarkToggleButtonState();
 }
 
-class _BookmarkToggleButtonState extends State<BookmarkToggleButton> {
+class BookmarkToggleButtonState extends State<BookmarkToggleButton> {
   late bool isBookmarked;
 
   @override
@@ -705,3 +696,5 @@ class _BookmarkToggleButtonState extends State<BookmarkToggleButton> {
     );
   }
 }
+
+
