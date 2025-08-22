@@ -159,8 +159,8 @@ class EventUser extends StatelessWidget {
    final String imgUrl="https://tse1.mm.bing.net/th/id/OIP.3moDhGXJQx9PQekpJFkHpgHaFf?pid=Api&P=0&h=180";
 
    final String dateEvent="29/10/2005";
-   final String placeEvent="Seminar Hall SOE ";
-   final String nameEvent="Blind Coding competition";
+   final String placeEvent="Seminar Hall SOE Building ";
+   final String nameEvent="Blind Coding competition Event";
    final String timeEvemt="8:00pm";
    final String participantsEvent="120";
    final bool isBookmarkedInitially = false;
