@@ -214,7 +214,6 @@ class ProportionalImage extends StatefulWidget {
   @override
   State<ProportionalImage> createState() => _ProportionalImageState();
 }
-
 class _ProportionalImageState extends State<ProportionalImage> {
   bool _loading = true;
   Image? _image;
@@ -271,7 +270,6 @@ class _ProportionalImageState extends State<ProportionalImage> {
           );
   }
 }
-
 class EventInfo extends StatefulWidget {
   final List<String> criteriaPoints;
   final String title;
@@ -425,6 +423,7 @@ class EventInfoState extends State<EventInfo> {
       ),
     );
   }
+
 }
 
 class EventDetails extends StatelessWidget {
@@ -651,8 +650,6 @@ class GalleryCoordinator extends StatelessWidget {
     ;
   }
 }
-
-
 
 class BookmarkToggleButton extends StatefulWidget {
   final bool isBookmarkedInitially;
