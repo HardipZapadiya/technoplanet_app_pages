@@ -159,8 +159,8 @@ class EventUser extends StatelessWidget {
    final String imgUrl="https://tse1.mm.bing.net/th/id/OIP.3moDhGXJQx9PQekpJFkHpgHaFf?pid=Api&P=0&h=180";
 
    final String dateEvent="29/10/2005";
-   final String placeEvent="Seminar Hall";
-   final String nameEvent="Blind Coding";
+   final String placeEvent="Seminar Hall SOE ";
+   final String nameEvent="Blind Coding competition";
    final String timeEvemt="8:00pm";
    final String participantsEvent="120";
    final bool isBookmarkedInitially = false;
@@ -469,12 +469,13 @@ class EventDetails extends StatelessWidget {
         Icon(Icons.access_alarm, color: Colors.grey[800], size: fontSize + 10),
         SizedBox(width: 10),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          
           children: [
             Text(
               time,
               style: TextStyle(
-                fontSize: fontSize - 2,
+                fontSize: fontSize - 1,
                 color: Colors.grey[800],
                 fontWeight: FontWeight.bold,
               ),
@@ -482,7 +483,7 @@ class EventDetails extends StatelessWidget {
             Text(
               date,
               style: TextStyle(
-                fontSize: fontSize - 2,
+                fontSize: fontSize - 1,
                 color: Colors.grey[800],
                 fontWeight: FontWeight.bold,
               ),
@@ -570,7 +571,7 @@ class EventDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(width: isTablet ? 40 : 20),
+              SizedBox(width: isTablet ? 20 : 10),
               Expanded(
                 
                 child: Column(
